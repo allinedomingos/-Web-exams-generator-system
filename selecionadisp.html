@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="page-header">
+</div>
+  <div class="row">
+    <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Seleciona Disciplina</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for dado in disciplinas %}
+        <tr>
+          <td><a href='/selecionatema?idDisciplina={{ dado.idDisciplina }}'>{{ dado.nomeD }}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function () {
+        $("#idCadastra").click(function () {
+            window.location="selecionatema.html";
+        });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block app_content %}
+<div class="page-header"></div>
+    <div class="row">
+    <div class="col-md-6">
+    <form action="{{ url_for('geraprova') }}" method=post>
+    <label>Numero de questões</label><br>
+    <input type="number" name="quantidade" min="1" max="30" placeholder="Numero de questões"> <br>
+        <br>
+    <label> Data maxima</label><br>
+    <input type="date" name="datamax"><br>
+      <br>
+    <label> Seleciona tema </label><br>
+          {% for dado in tema %}
+                 {% set teman = 'tema-' ~ dado.idTema %}
+                    <input type="checkbox" value="{{ dado.idTema }}" name="{{ teman }}"/> {{ dado.nomeT }} <br>
+          {% endfor %}
+          <BR><button type=submit>Gerar</button>
+    </form>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function () {
+    });
+  </script>
+{% endblock %}

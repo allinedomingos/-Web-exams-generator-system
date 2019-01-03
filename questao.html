@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+</div>
+  <div class="row">
+    <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+            <th>ID </th>
+            <th>Questão </th>
+            <th>Resposta</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for dado in questao %}
+        <tr>
+          <td>{{ dado.idQuestao }}</td>
+          <td>{{ dado.questao}}</td>
+          <td>{{ dado.resposta}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+    <div class="right"><button id="idCadastra"> Cadastra </button></div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function () {
+        $("#idCadastra").click(function () {
+            window.location="cadastraQuestao?idTema={{ idTema }}";
+        });
+    });
+  </script>
+{% endblock %}
